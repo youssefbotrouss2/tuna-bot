@@ -22,7 +22,7 @@ global.APIKeys = {
 }
 
 //═══════[modification]════════\\
-global.owner = ['27634090203','+447441437150'] //owner number, u can put multiple owner number, within quotations and seperated by comma.
+global.owner = ['27634090203'] //owner number, u can put multiple owner number, within quotations and seperated by comma.
 global.pemilik = ['27634090203'] //another owner number
 global.premium = ['27634090203'] //premium number
 global.pengguna = 'Drips' //username
@@ -35,13 +35,13 @@ global.prefa = ['#','!','/',''] //prefix
 global.sp = '🔵' //design
 global.mess = {
     success: 'Takaenda Done!',
-    admin: 'This Feature Is Only For Admin!',
-    botAdmin: 'Bot Must Be Admin First!',
-    owner: 'This Feature Is Only For Owner',
-    group: 'Feature Used Only For Groups!',
-    private: 'Features Used Only For Private Chat!',
-    bot: 'This feature in only for the bot number',
-    wait: 'In process...',
+    admin: 'you must be admin to use this cmd!',
+    botAdmin: 'zim bot must be admin neh!',
+    owner: 'This cmd is for zim bot owner only',
+    group: 'oooh sorry this cmd is for groups only!',
+    private: 'goossssh it can only used in dms!',
+    bot: 'This cmd  its only for the bot host',
+    wait: 'wait zim bot processing ',
     endLimit: 'Your Daily Limit Has Expired, The Limit Will Be Reset Every 12 Hours',
 }
 global.limitawal = {
