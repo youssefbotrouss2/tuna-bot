@@ -2435,13 +2435,13 @@ const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
 │
 │💎𝗥𝗨𝗡𝗧𝗜𝗠𝗘 : ${runtime(process.uptime())}
 │
-│💎𝗕𝗢𝗧 𝗡𝗔𝗠𝗘 : ${global.botnma}
+│💎𝗕𝗢𝗧 𝗡𝗔𝗠𝗘 : ZIM BOT  INC
 │
-│💎𝗢𝗪𝗡𝗘𝗥 𝗡𝗔𝗠𝗘 : ${global.ownernma}
+│💎𝗢𝗪𝗡𝗘𝗥 𝗡𝗔𝗠𝗘: DRIPS
 ┃
 ┃💎𝗢𝗪𝗡𝗘𝗥: ${global.owner}
 ┃
-┃💎𝗛𝗢𝗦𝗧: ${os.hostname()}
+┃💎𝗛𝗢𝗦𝗧: KALI LINUX MAC
 ┃
 ┃💎𝗣𝗟𝗔𝗧𝗙𝗢𝗥𝗠: ${os.platform()}
 ╰─────────────────────⦁
