@@ -593,7 +593,7 @@ Please @${m.mentionedJid[0].split`@`[0]} to type accept/reject`
                 ZimBotInc.sendMessage(m.chat, { image: { url: 'https://i.imgur.com/TfI3QYW.jpg' }, caption: `*𝗛𝗜 𝗕𝗥𝗢 ${m.pushName}*\n\n 𝗕𝗢𝗧 𝗥𝗘𝗡𝗧𝗔𝗟 𝗣𝗥𝗜𝗖𝗘\n 250rands Per Group via Gpay/paytm/phonepe 1 Month\n\nFor more details, you can chat with the owner\nhttps://wa.me/227634090203 (ZIM BOT OWNER)\n\n𝗗𝗢𝗡𝗔𝗧𝗘 : \n\n 𝗙𝗔𝗠𝗣𝗔𝗬 : https://i.imgur.com/TfI3QYW.jpg\n 𝗣𝗔𝗬𝗧𝗠 : https://telegra.ph/file/577bd4f28d90ca2c7f369.jpg` }, { quoted: m })
             }
             break
-            case 'sc': case 'script': {
+		case 'sc': case 'script': case 'git': {
                 reply('Script : https://github.com/zim-bot/tuna-bot\n Dont Forget to SUB https://youtu.be/cZ3UrzArI5A\n Dont Forget To Subscribe')
             }
             break
@@ -772,7 +772,7 @@ Please @${m.mentionedJid[0].split`@`[0]} to type accept/reject`
 Ciee Whats Going On💖👀`
             let menst = [orang, jodoh]
             let buttons = [
-                        { buttonId: '❤️congrats', buttonText: { displayText: '❤️congrats' }, type: 1 }
+                        { buttonId: 'CONGRATS', buttonText: { displayText: 'CONGRATS' }, type: 1 }
                     ]
                     await ZimBotInc.sendButtonText(m.chat, buttons, jawab, ZimBotInc.user.name, m, {mentions: menst})
             }
@@ -791,7 +791,7 @@ Ciee Whats Going On💖👀`
                 await ZimBotInc.groupLeave(m.chat).then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
             }
             break
-	case 'kick': {
+	    case 'kick': case 'remove': case 'ban':{
 		if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
@@ -1104,8 +1104,8 @@ break
                 await ZimBotInc.groupSettingUpdate(m.chat, 'locked').then((res) => reply(`Successfully Close Edit Group Info`)).catch((err) => reply(jsonformat(err)))
              } else {
              let buttons = [
-                        { buttonId: 'editinfo open', buttonText: { displayText: 'Open' }, type: 1 },
-                        { buttonId: 'editinfo close', buttonText: { displayText: 'Close' }, type: 1 }
+                        { buttonId: 'editinfo open', buttonText: { displayText: 'OPEN' }, type: 1 },
+                        { buttonId: 'editinfo close', buttonText: { displayText: 'CLOSE' }, type: 1 }
                     ]
                     await ZimBotInc.sendButtonText(m.chat, buttons, `Mode Edit Info`, ZimBotInc.user.name, m)
 
@@ -1115,7 +1115,7 @@ break
 case 'antilink':
 	        if (!m.isGroup) return reply(`This feature only be used in group`)
 			if (!isAdmins) return reply(`This feature could be used by admin only`)
-			if (!isBotAdmins) return reply(`Bot must be admin first`)
+			if (!isBotAdmins) return reply(`ZimBot must be admin first`)
 					if (args[0] === 'on') {
 						if (isAntiLink) return reply('Already Activated')
 						antilink.push(m.chat)
@@ -1146,8 +1146,8 @@ case 'antilink':
                 m.reply(`Anti Wa.me is not activated!`)
                 } else {
                  let buttons = [
-                        { buttonId: 'antiwame on', buttonText: { displayText: 'On' }, type: 1 },
-                        { buttonId: 'antiwame off', buttonText: { displayText: 'Off' }, type: 1 }
+                        { buttonId: 'antiwame on', buttonText: { displayText: 'ON' }, type: 1 },
+                        { buttonId: 'antiwame off', buttonText: { displayText: 'OFF' }, type: 1 }
                     ]
                     await ZimBotInc.sendButtonText(m.chat, buttons, `Mode Anti Wa.me`, ZimBotInc.user.name, m)
                 }
@@ -1166,8 +1166,8 @@ case 'antilink':
                 reply(`${ZimBotInc.user.name} has been unmuted in this group!`)
                 } else {
                  let buttons = [
-                        { buttonId: 'mute on', buttonText: { displayText: 'On' }, type: 1 },
-                        { buttonId: 'mute off', buttonText: { displayText: 'Off' }, type: 1 }
+                        { buttonId: 'mute on', buttonText: { displayText: 'ON' }, type: 1 },
+                        { buttonId: 'mute off', buttonText: { displayText: 'OFF' }, type: 1 }
                     ]
                     await ZimBotInc.sendButtonText(m.chat, buttons, `Mute Bot`, ZimBotInc.user.name, m)
                 }
@@ -1536,16 +1536,16 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                             hydratedFooterText: `Playing To ${text}`,
                             hydratedButtons: [{
                                 urlButton: {
-                                    displayText: 'Source Link',
+                                    displayText: 'YOUTUBE',
                                     url: `${anu.url}`
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Audio',
+                                    displayText: 'SONG',
                                     id: `ytmp3 ${anu.url} 320kbps`
                                     }
                                 },{quickReplyButton: {
-                                    displayText: 'VIdeo',
+                                    displayText: 'VIDEO',
                                     id: `ytmp4 ${anu.url} 360p`
                                 }
                             }]
@@ -1624,7 +1624,7 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
 	    break
             case 'coffee': case 'kopi': {
             let buttons = [
-                    {buttonId: `coffe`, buttonText: {displayText: 'Next Image'}, type: 1}
+                    {buttonId: `coffe`, buttonText: {displayText: 'NEXT PIC'}, type: 1}
                 ]
                 let buttonMessage = {
                     image: { url: 'https://coffee.alexflipnote.dev/random' },
@@ -1642,7 +1642,7 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                 anu = await wallpaper(text)
                 result = anu[Math.floor(Math.random() * anu.length)]
 		let buttons = [
-                    {buttonId: `wallpaper ${text}`, buttonText: {displayText: 'Next Image'}, type: 1}
+                    {buttonId: `wallpaper ${text}`, buttonText: {displayText: 'NEXT  PIC'}, type: 1}
                 ]
                 let buttonMessage = {
                     image: { url: result.image[0] },
@@ -1660,7 +1660,7 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                 anu = await wikimedia(text)
                 result = anu[Math.floor(Math.random() * anu.length)]
                 let buttons = [
-                    {buttonId: `wikimedia ${text}`, buttonText: {displayText: 'Next Image'}, type: 1}
+                    {buttonId: `wikimedia ${text}`, buttonText: {displayText: 'NEXT PIC'}, type: 1}
                 ]
                 let buttonMessage = {
                     image: { url: result.image },
@@ -1677,7 +1677,7 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                 let anu = await quotesAnime()
                 result = anu[Math.floor(Math.random() * anu.length)]
                 let buttons = [
-                    {buttonId: `quotesanime`, buttonText: {displayText: 'Next'}, type: 1}
+                    {buttonId: `quotesanime`, buttonText: {displayText: 'NEXT'}, type: 1}
                 ]
                 let buttonMessage = {
                     text: `~_${result.quotes}_\n\nBy '${result.karakter}', ${result.anime}\n\n- ${result.up_at}`,
@@ -1691,7 +1691,7 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
 	        case 'motivasi': case 'dilanquote': case 'bucinquote': case 'katasenja': case 'puisi': {
                 let anu = await fetchJson(api('zenz', '/api/'+command, {}, 'apikey'))
                 let buttons = [
-                    {buttonId: `motivasi`, buttonText: {displayText: 'Next'}, type: 1}
+                    {buttonId: `motivasi`, buttonText: {displayText: 'NEXT'}, type: 1}
                 ]
                 let buttonMessage = {
                     text: anu.result.message,
@@ -1809,8 +1809,8 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                 replay(mess.wait)
                 let anu = await fetchJson(api('zenz', '/downloader/tiktok', { url: text }, 'apikey'))
                 let buttons = [
-                    {buttonId: `tiktoknowm ${text}`, buttonText: {displayText: 'Video'}, type: 1},
-                    {buttonId: `tiktokmp3 ${text}`, buttonText: {displayText: 'Audio'}, type: 1}
+                    {buttonId: `tiktoknowm ${text}`, buttonText: {displayText: 'VIDEO'}, type: 1},
+                    {buttonId: `tiktokmp3 ${text}`, buttonText: {displayText: 'SONG'}, type: 1}
                 ]
                 let buttonMessage = {
                     video: { url: anu.result.watermark },
@@ -1876,7 +1876,7 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                 replay(mess.wait)
                 let anu = await fetchJson(api('zenz', '/api/downloader/twitter', { url: text }, 'apikey'))
                 let buttons = [
-                    {buttonId: `twittermp3 ${text}`, buttonText: {displayText: 'Audio'}, type: 1}
+                    {buttonId: `twittermp3 ${text}`, buttonText: {displayText: 'SONG'}, type: 1}
                 ]
                 let buttonMessage = {
                     video: { url: anu.result.HD || anu.result.SD },
@@ -1893,7 +1893,7 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                 replay(mess.wait)
                 let anu = await fetchJson(api('zenz', '/api/downloader/twitter', { url: text }, 'apikey'))
                 let buttons = [
-                    {buttonId: `twitter ${text}`, buttonText: {displayText: 'Video'}, type: 1}
+                    {buttonId: `twitter ${text}`, buttonText: {displayText: 'VIDEO'}, type: 1}
                 ]
                 let buttonMessage = {
 		    image: { url: anu.result.thumb },
@@ -1910,7 +1910,7 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                 if (!text) throw 'Enter Query Link!'
                 replay(mess.wait)
                 let anu = await fetchJson(api('zenz', '/api/downloader/facebook', { url: text }, 'apikey'))
-                ZimBotInc.sendMessage(m.chat, { video: { url: anu.result.url }, caption: `⭔ Title : ${anu.result.title}`}, { quoted: m })
+                ZimBotInc.sendMessage(m.chat, { video: { url: anu.result.url }, caption: `🔮 Title : ${anu.result.title}`}, { quoted: m })
             }
             break
 	        case 'pindlkxkdksk': case 'pinterestdlksksks': {
@@ -1927,8 +1927,8 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
 		let anu = await umma(isUrl(text)[0])
 		if (anu.type == 'video') {
 		    let buttons = [
-                        {buttonId: `ytmp3 ${anu.media[0]} 128kbps`, buttonText: {displayText: 'Audio'}, type: 1},
-                        {buttonId: `ytmp4 ${anu.media[0]} 360p`, buttonText: {displayText: 'Video'}, type: 1}
+                        {buttonId: `ytmp3 ${anu.media[0]} 128kbps`, buttonText: {displayText: 'SONG'}, type: 1},
+                        {buttonId: `ytmp4 ${anu.media[0]} 360p`, buttonText: {displayText: 'VIDEO'}, type: 1}
                     ]
 		    let buttonMessage = {
 		        image: { url: anu.author.profilePic },
@@ -2170,12 +2170,12 @@ View list of message with ${prefix}listmsg`)
 				this.anonymous = this.anonymous ? this.anonymous : {}
 				let buttons = [{
                                 urlButton: {
-                                    displayText: 'Report Bug',
+                                    displayText: 'REPORT BUG',
                                     url: 'https://wa.me/27634090203?text=hello+bro+i+found+a+bug+in+your+bot'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'Start Anonymous',
+                                    displayText: 'START CHAT',
                                     id: 'start'
                                 }
                             }]
@@ -2188,7 +2188,7 @@ case 'sendkontak': case 'sendcontact': {
                 let room = Object.values(this.anonymous).find(room => room.check(m.sender))
                 if (!room) {
                     let buttons = [
-                        { buttonId: 'start', buttonText: { displayText: 'Start' }, type: 1 }
+                        { buttonId: 'start', buttonText: { displayText: 'START' }, type: 1 }
                     ]
                     await ZimBotInc.sendButtonText(m.chat, buttons, `_You Are Not In Anonymous Session, Press The Button To Find A Partner_`)
                     throw false
@@ -2205,7 +2205,7 @@ case 'sendkontak': case 'sendcontact': {
                 let room = Object.values(this.anonymous).find(room => room.check(m.sender))
                 if (!room) {
                     let buttons = [
-                        { buttonId: 'start', buttonText: { displayText: 'Start' }, type: 1 }
+                        { buttonId: 'start', buttonText: { displayText: 'START' }, type: 1 }
                     ]
                     await ZimBotInc.sendButtonText(m.chat, buttons, `_You Are Not In Anonymous Session, Press The Button To Find A Partner_`)
                     throw false
@@ -2221,7 +2221,7 @@ case 'sendkontak': case 'sendcontact': {
                 this.anonymous = this.anonymous ? this.anonymous : {}
                 if (Object.values(this.anonymous).find(room => room.check(m.sender))) {
                     let buttons = [
-                        { buttonId: 'stop', buttonText: { displayText: 'Stop' }, type: 1 }
+                        { buttonId: 'stop', buttonText: { displayText: 'STOP' }, type: 1 }
                     ]
                     await ZimBotInc.sendButtonText(m.chat, buttons, `_You Are Still In Anonymous Session, Press The Button Below To Terminate Your Anonymous Session_`, ZimBotInc.user.name, m)
                     throw false
@@ -2229,8 +2229,8 @@ case 'sendkontak': case 'sendcontact': {
                 let room = Object.values(this.anonymous).find(room => room.state === 'WAITING' && !room.check(m.sender))
                 if (room) {
                     let buttons = [
-                        { buttonId: 'next', buttonText: { displayText: 'Skip' }, type: 1 },
-                        { buttonId: 'stop', buttonText: { displayText: 'Stop' }, type: 1 }
+                        { buttonId: 'next', buttonText: { displayText: 'SKIP' }, type: 1 },
+                        { buttonId: 'stop', buttonText: { displayText: 'STOP' }, type: 1 }
                     ]
                     await ZimBotInc.sendButtonText(room.a, buttons, `_Successfully Found Partner, Now You Can Send Messages_`, ZimBotInc.user.name, m)
                     room.b = m.sender
@@ -2251,7 +2251,7 @@ case 'sendkontak': case 'sendcontact': {
                         },
                     }
                     let buttons = [
-                        { buttonId: 'keluar', buttonText: { displayText: 'Stop' }, type: 1 }
+                        { buttonId: 'keluar', buttonText: { displayText: 'STOP' }, type: 1 }
                     ]
                     await ZimBotInc.sendButtonText(m.chat, buttons, `_Please Wait, Looking For A Partner_`, ZimBotInc.user.name, m)
                 }
@@ -2263,7 +2263,7 @@ case 'sendkontak': case 'sendcontact': {
                 let romeo = Object.values(this.anonymous).find(room => room.check(m.sender))
                 if (!romeo) {
                     let buttons = [
-                        { buttonId: 'start', buttonText: { displayText: 'Start' }, type: 1 }
+                        { buttonId: 'start', buttonText: { displayText: 'START' }, type: 1 }
                     ]
                     await ZimBotInc.sendButtonText(m.chat, buttons, `\`\`\`You Are Not In Anonymous Session, Press The Button To Find A Partner\`\`\``)
                     throw false
@@ -2274,8 +2274,8 @@ case 'sendkontak': case 'sendcontact': {
                 let room = Object.values(this.anonymous).find(room => room.state === 'WAITING' && !room.check(m.sender))
                 if (room) {
                     let buttons = [
-                        { buttonId: 'next', buttonText: { displayText: 'Skip' }, type: 1 },
-                        { buttonId: 'keluar', buttonText: { displayText: 'Stop' }, type: 1 }
+                        { buttonId: 'next', buttonText: { displayText: 'SKIP' }, type: 1 },
+                        { buttonId: 'keluar', buttonText: { displayText: 'STOP' }, type: 1 }
                     ]
                     await ZimBotInc.sendButtonText(room.a, buttons, `\`\`\`Successfully Found Partner, now you can send message\`\`\``, ZimBotInc.user.name, m)
                     room.b = m.sender
@@ -2296,7 +2296,7 @@ case 'sendkontak': case 'sendcontact': {
                         },
                     }
                     let buttons = [
-                        { buttonId: 'keluar', buttonText: { displayText: 'Stop' }, type: 1 }
+                        { buttonId: 'keluar', buttonText: { displayText: 'STOP' }, type: 1 }
                     ]
                     await ZimBotInc.sendButtonText(m.chat, buttons, `\`\`\`Please wait, looking for a partner\`\`\``, ZimBotInc.user.name, m)
                 }
