@@ -1112,25 +1112,26 @@ break
             }
             }
             break
-case 'antilink':
-	        if (!m.isGroup) return reply(`This feature only be used in group`)
-			if (!isAdmins) return reply(`This feature could be used by admin only`)
-			if (!isBotAdmins) return reply(`ZimBot must be admin first`)
-					if (args[0] === 'on') {
-						if (isAntiLink) return reply('Already Activated')
-						antilink.push(m.chat)
-						fs.writeFileSync('./database/antilink.json', JSON.stringify(antilink))
-						reply('Successfully activated the antilink feature')
-						ZimBotInc.sendMessage(m.chat,  {text: `ALLERT!!! This group has been installed anti-link\nIf you violate then I will kick`})
-					} else if (args[0] === 'off') {
-						if (!isAntiLink) return reply('already deactivated')
-						var ini = antilink.indexOf(m.chat)
-						antilink.splice(ini, 1)
-						fs.writeFileSync('./database/antilink.json', JSON.stringify(antilink))
-						reply('Successfully disabled antilink feature')
-					} else if (!q){
- reply(`Pilih Antilink On / Off `)
-					}
+ case 'antilink': {
+                if (!m.isGroup) throw mess.group
+                if (!isBotAdmins) throw mess.botAdmin
+                if (!isAdmins) throw mess.admin
+                if (args[0] === "on") {
+                if (db.data.chats[m.chat].antilink) return m.reply(`*ITS ON ALREADY*`)
+                db.data.chats[m.chat].antilink = true
+                m.reply(`*ANTILINK ACTIVATED*`)
+                } else if (args[0] === "off") {
+                if (!db.data.chats[m.chat].antilink) return m.reply(`*ITS OFF ALREADY*`)
+                db.data.chats[m.chat].antilink = false
+                m.reply(`*ANTILINK DIACTIVATED*`)
+                } else {
+                 let buttons = [
+                        { buttonId: 'antilink on', buttonText: { displayText: 'ON' }, type: 1 },
+                        { buttonId: 'antilink off', buttonText: { displayText: 'OFF' }, type: 1 }
+                    ]
+                    await ZimBotInc.sendButtonText(m.chat, buttons, `Mode Antilink`, ZimBotInc.user.name, m)
+                }
+             }
 					break 
 					case 'antiwame': {
                 if (!m.isGroup) throw mess.group
@@ -1244,7 +1245,7 @@ case 'antilink':
                 if (!isCreator) throw mess.owner
                 if (!text) throw `Where is the text?\n\nExample : ${prefix + command} Zimbot here`
                 let anu = await store.chats.all().map(v => v.id)
-                reply(`Mengirim Broadcast Ke ${anu.length} Chat\nWaktu Selesai ${anu.length * 1.5} second`)
+                reply(`Send Broadcast To ${anu.length} Chat\nWaktu Selesai ${anu.length * 1.5} second`)
 		for (let yoi of anu) {
 		    await sleep(1500)
 		    let btn = [{
@@ -1297,15 +1298,15 @@ case 'antilink':
                  ZimBotInc.sendTextWithMentions(m.chat, teks, m)
              }
              break
-                case 'listgc': {
+                 case 'listgc': {
                  let anu = await store.chats.all().filter(v => v.id.endsWith('@g.us')).map(v => v.id)
-                 let teks = `🔵 *𝗚𝗥𝗢𝗨𝗣 𝗖𝗛𝗔𝗧 𝗟𝗜𝗦𝗧*\n\n𝗧𝗢𝗧𝗔𝗟 𝗚𝗥𝗢𝗨𝗣 : ${anu.length} Group\n\n`
+                 let teks = `⬣ *LIST GROUP CHAT*\n\nTotal Group : ${anu.length} Group\n\n`
                  for (let i of anu) {
-                     let metadata = await ZimBotInc.groupMetadata(i)
-                     teks += `🔵 *𝗡𝗔𝗠𝗘 :* ${metadata.subject}\n🔵 *𝗢𝗪𝗡𝗘𝗥 :* @${metadata.owner.split('@')[0]}\n🔵 *𝗜𝗗 :* ${metadata.id}\n⬡ *𝗠𝗔𝗗𝗘 :* ${moment(metadata.creation * 1000).tz('Africa/Harare').format('DD/MM/YYYY HH:mm:ss')}\n🔵 *𝗠𝗘𝗠𝗕𝗘𝗥 :* ${metadata.participants.length}\n\n────────────────────────\n\n`
+                     let metadata = await hisoka.groupMetadata(i)
+                     teks += `🔵 *𝗡𝗔𝗠𝗘 :* ${metadata.subject}\n⬡ *🔵OWNER :* @${metadata.owner.split('@')[0]}\n🔵 *🔵ID :* ${metadata.id}\n🔵 *MADE :* ${moment(metadata.creation * 1000).tz('Africa/Harare').format('DD/MM/YYYY HH:mm:ss')}\n🔵 *MEMBERS :* ${metadata.participants.length}\n\n────────────────────────\n\n`
                  }
                  ZimBotInc.sendTextWithMentions(m.chat, teks, m)
-             }
+	     }	 
              break
              case 'listonline': case 'onlinelist': case 'liston': {
                     let id = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : m.chat
@@ -1609,9 +1610,9 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                 ZimBotInc.sendMessage(m.chat, { image: { url: result }, caption: '🔮 Media Url : '+result }, { quoted: m })
             }
             break
-            case 'anime': case 'waifu': case 'husbu': case 'neko': case 'shinobu': case 'megumin': {
-                replay(mess.wait)
-                ZimBotInc.sendMessage(m.chat, { image: { url: api('zenz', '/api/random/anime/'+command, 'apikey') }, caption: `Download From ${text}` }, { quoted: m})
+            case 'anime': case 'waifu': case 'husbu': case 'neko': case 'shinobu': case 'megumin': case 'waifus': case 'nekos': case 'trap': case 'blowjob': {
+                m.reply(mess.wait)
+                ZimBotInc.sendMessage(m.chat, { image: { url: api('zenz', '/api/random/'+command, {}, 'apikey') }, caption: 'ZIM BOT INC ' + command }, { quoted: m })
             }
             break
 	    case 'couplepp': case 'ppcouple': {
@@ -1906,14 +1907,14 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                 ZimBotInc.sendMessage(m.chat, { audio: { url: anu.result.audio } }, { quoted: msg })
             }
             break
-	        case 'fbdlkxkxkx': case 'fbkckxkxk': case 'facebookjfkddkk': {
-                if (!text) throw 'Enter Query Link!'
-                replay(mess.wait)
+	        case 'fbdl': case 'fb': case 'facebook': {
+                if (!text) throw ' Query Link!'
+                m.reply(mess.wait)
                 let anu = await fetchJson(api('zenz', '/api/downloader/facebook', { url: text }, 'apikey'))
-                ZimBotInc.sendMessage(m.chat, { video: { url: anu.result.url }, caption: `🔮 Title : ${anu.result.title}`}, { quoted: m })
+                ZimBotInc.sendMessage(m.chat, { video: { url: anu.result.url }, caption: ` *Title* : ${anu.result.title}`}, { quoted: m })
             }
             break
-	        case 'pindlkxkdksk': case 'pinterestdlksksks': {
+	        case 'pindl': case 'pinterestdl': {
                 if (!text) throw 'Enter Query Link!'
                 replay(mess.wait)
                 let anu = await fetchJson(api('zenz', '/api/downloader/pinterestdl', { url: text }, 'apikey'))
@@ -3370,6 +3371,53 @@ break
   │🔲 ${prefix}stop
   ╰─────────────⦁
   
+  ${prefix}3dchristmas
+│⭔ ${prefix}3ddeepsea
+│⭔ ${prefix}americanflag
+│⭔ ${prefix}3dscifi
+│⭔ ${prefix}3drainbow
+│⭔ ${prefix}3dwaterpipe
+│⭔ ${prefix}halloweenskeleton
+│⭔ ${prefix}sketch
+│⭔ ${prefix}bluecircuit
+│⭔ ${prefix}space
+│⭔ ${prefix}metallic
+│⭔ ${prefix}fiction
+│⭔ ${prefix}greenhorror
+│⭔ ${prefix}transformer
+│⭔ ${prefix}berry
+│⭔ ${prefix}thunder
+│⭔ ${prefix}magma
+│⭔ ${prefix}3dcrackedstone
+│⭔ ${prefix}3dneonlight
+│⭔ ${prefix}impressiveglitch
+│⭔ ${prefix}naturalleaves
+│⭔ ${prefix}fireworksparkle
+│⭔ ${prefix}matrix
+│⭔ ${prefix}dropwater
+│⭔ ${prefix}harrypotter
+│⭔ ${prefix}foggywindow
+│⭔ ${prefix}neondevils
+│⭔ ${prefix}christmasholiday
+│⭔ ${prefix}3dgradient
+│⭔ ${prefix}blackpink
+│⭔ ${prefix}gluetext
+
+    
+┌──⭓ *Ephoto Menu*
+│
+│⭔ ${prefix}ffcover
+│⭔ ${prefix}crossfire
+│⭔ ${prefix}galaxy
+│⭔ ${prefix}glass
+│⭔ ${prefix}neon
+│⭔ ${prefix}beach
+│⭔ ${prefix}blackpink
+│⭔ ${prefix}igcertificate
+│⭔ ${prefix}ytcertificate
+│
+└───────⭓
+
   ╭──❰ 𝗦𝗬𝗦𝗧𝗘𝗠 𝗠𝗘𝗡𝗨 ❱
   │⚙️ ${prefix}antilink
   │⚙️ ${prefix}mute
