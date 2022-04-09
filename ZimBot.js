@@ -2392,14 +2392,14 @@ case 'speedtest': case 'testspeed': {
             }
             break
             case 'cry':case 'kill':case 'hug':case 'pat':case 'lick':case 'kiss':case 'bite':case 'yeet':case 'neko':case 'bully':case 'bonk':case 'wink':case 'poke':case 'nom':case 'slap':case 'smile':case 'wave':case 'awoo':case 'blush':case 'smug':case 'glomp':case 'happy':case 'dance':case 'cringe':case 'cuddle':case 'highfive':case 'shinobu':case 'megumin':case 'handhold':
-					reply(lang.wait())
+					reply(mess.wait)
 					axios.get(`https://api.waifu.pics/sfw/${command}`)
 					.then(({data}) => {
 				    ZimBotInc.sendVideoAsSticker(m.chat, data.url, m, { packname: global.packname, author: global.author })
 					})
 					break
 			case 'waifu': case 'loli':
-					reply(lang.wait())
+					reply(mess.wait)
 					axios.get(`https://api.waifu.pics/sfw/waifu`)
 					.then(({data}) => {
 					ZimBotInc.sendImage(m.chat, data.url, mess.success, m)
