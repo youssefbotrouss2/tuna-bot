@@ -2402,7 +2402,7 @@ case 'speedtest': case 'testspeed': {
 					reply(lang.wait())
 					axios.get(`https://api.waifu.pics/sfw/waifu`)
 					.then(({data}) => {
-					ZimBotInc.sendImage(m.chat, data.url, lang.ok(), m)
+					ZimBotInc.sendImage(m.chat, data.url, mess.success, m)
 					})
 					break
 case 'tes': case 'test': case 'alive': case 'bot': case 'robot': case 'zimbot': case 'drips':{
