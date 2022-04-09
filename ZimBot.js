@@ -2373,7 +2373,38 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 Report Message: ${text}` })
 reply(`Successfully Reported To The Owner\n\nPlease Make Sure The Bug Is Valid, If You Play With This, Use This Feature Again And Again For No Reason, You Will Be Blocked For Sure !`)
                     }
-                    break 
+                    break
+case 'speedtest': case 'testspeed': {
+            m.reply('Testing Speed...')
+            let cp = require('child_process')
+            let { promisify } = require('util')
+            let exec = promisify(cp.exec).bind(cp)
+          let o
+          try {
+          o = await exec('python speed.py')
+          } catch (e) {
+          o = e
+         } finally {
+        let { stdout, stderr } = o
+        if (stdout.trim()) m.reply(stdout)
+        if (stderr.trim()) m.reply(stderr)
+            }
+            }
+            break
+            case 'cry':case 'kill':case 'hug':case 'pat':case 'lick':case 'kiss':case 'bite':case 'yeet':case 'neko':case 'bully':case 'bonk':case 'wink':case 'poke':case 'nom':case 'slap':case 'smile':case 'wave':case 'awoo':case 'blush':case 'smug':case 'glomp':case 'happy':case 'dance':case 'cringe':case 'cuddle':case 'highfive':case 'shinobu':case 'megumin':case 'handhold':
+					reply(lang.wait())
+					axios.get(`https://api.waifu.pics/sfw/${command}`)
+					.then(({data}) => {
+				    ZimBotInc.sendVideoAsSticker(m.chat, data.url, m, { packname: global.packname, author: global.author })
+					})
+					break
+			case 'waifu': case 'loli':
+					reply(lang.wait())
+					axios.get(`https://api.waifu.pics/sfw/waifu`)
+					.then(({data}) => {
+					ZimBotInc.sendImage(m.chat, data.url, lang.ok(), m)
+					})
+					break
 case 'tes': case 'test': case 'alive': case 'bot': case 'robot': case 'zimbot': case 'drips':{
                 anu = `Hi ${pushname}
 𝗭𝗶𝗺𝗯𝗼𝘁 𝗶𝘀 𝗵𝗲𝗿𝗲 𝗰𝗵𝗶𝗹𝗹𝗶𝗻𝗴 𝘄𝗶𝘁𝗵 𝗯𝗶𝗴 𝗯𝗼𝘆𝘀`
@@ -2529,6 +2560,11 @@ let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObje
 											"title": "CONVERT CMD",
 										"description": "Zim-Bot Convert Features",
 										"rowId": `${prefix}convertmenu`
+										},
+										{
+											"title": "RANDOM ANIME CMD",
+										"description": "Zim-Bot Ramdom Anime Features",
+										"rowId": `${prefix}ranimemenu`
 										},
 										{
 										"title": "MISCELLANEOUS CMD",
@@ -2946,10 +2982,71 @@ case 'convertmenu': {
                 ZimBotInc.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
 break
+case 'ranimemenu': {
+	anu = `
+	*RANDOM ANIME*
+	
+  🐦 ${prefix}loli
+  🐦 ${prefix}neko
+  🐦 ${prefix}waifu
+  🐦 ${prefix}shinobu
+  🐦 ${prefix}megumin
+  🐦 ${prefix}bully
+  🐦 ${prefix}cuddle
+  🐦 ${prefix}cry
+  🐦 ${prefix}hug
+  🐦 ${prefix}awoo
+  🐦 ${prefix}kiss
+  🐦 ${prefix}lick
+  🐦 ${prefix}pat
+  🐦 ${prefix}smug
+  🐦 ${prefix}bonk
+  🐦 ${prefix}yeet
+  🐦 ${prefix}blush
+  🐦 ${prefix}smile
+  🐦 ${prefix}wave
+  🐦 ${prefix}highfive
+  🐦 ${prefix}handhold
+  🐦 ${prefix}nom
+  🐦 ${prefix}bite
+  🐦 ${prefix}glomp
+  🐦 ${prefix}slap
+  🐦 ${prefix}kill
+  🐦 ${prefix}happy
+  🐦 ${prefix}wink
+  🐦 ${prefix}poke
+  🐦 ${prefix}dance
+  🐦 ${prefix}cringe
+`
+const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+                    templateMessage: {
+                        hydratedTemplate: {
+                            hydratedContentText: anu,
+                            locationMessage: {
+                            jpegThumbnail: fs.readFileSync('./Zimbot/drips.jpg')},
+                            hydratedFooterText: `ZIM BOT INC`,
+                            hydratedButtons: [{
+                                urlButton: {
+                                    displayText: 'SUBSCRIBE',
+                                    url: 'https://youtu.be/-qgrOvpZqH8'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'OWNER',
+                                    id: `${prefix}owner`
+                                }
+                            }]
+                        }
+                    }
+                }), { userJid: m.chat })
+                ZimBotInc.relayMessage(m.chat, template.message, { messageId: template.key.id })
+            }
+break
 case 'nocategorymenu': {
 	anu = `
 	*𝗠𝗜𝗦𝗖 𝗠𝗘𝗡𝗨*
   
+  🔵 ${prefix}speedtest
   🔵 ${prefix}ping
   🔵 ${prefix}owner
   🔵 ${prefix}donate
@@ -3206,8 +3303,43 @@ break
   │🔵 ${prefix}ebinary
   │🔵 ${prefix}dbinary
   ╰─────────────⦁
+
+  ╭──❰ *RANDOM ANIME* ❱
+  │🐦 ${prefix}loli
+  │🐦 ${prefix}neko
+  │🐦 ${prefix}waifu
+  │🐦 ${prefix}shinobu
+  │🐦 ${prefix}megumin
+  │🐦 ${prefix}bully
+  │🐦 ${prefix}cuddle
+  │🐦 ${prefix}cry
+  │🐦 ${prefix}hug
+  │🐦 ${prefix}awoo
+  │🐦 ${prefix}kiss
+  │🐦 ${prefix}lick
+  │🐦 ${prefix}pat
+  │🐦 ${prefix}smug
+  │🐦 ${prefix}bonk
+  │🐦 ${prefix}yeet
+  │🐦 ${prefix}blush
+  │🐦 ${prefix}smile
+  │🐦 ${prefix}wave
+  │🐦 ${prefix}highfive
+  │🐦 ${prefix}handhold
+  │🐦 ${prefix}nom
+  │🐦 ${prefix}bite
+  │🐦 ${prefix}glomp
+  │🐦 ${prefix}slap
+  │🐦 ${prefix}kill
+  │🐦 ${prefix}happy
+  │🐦 ${prefix}wink
+  │🐦 ${prefix}poke
+  │🐦 ${prefix}dance
+  │🐦 ${prefix}cringe
+  ╰─────────────⦁
   
   ╭──❰ 𝗠𝗜𝗦𝗖 𝗠𝗘𝗡𝗨 ❱
+  │🪐 ${prefix}speedtest
   │🪐 ${prefix}ping
   │🪐 ${prefix}owner
   │🪐 ${prefix}donate
