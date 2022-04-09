@@ -3370,53 +3370,52 @@ break
   │🔲 ${prefix}next
   │🔲 ${prefix}stop
   ╰─────────────⦁
-  
-  ${prefix}3dchristmas
-│⭔ ${prefix}3ddeepsea
-│⭔ ${prefix}americanflag
-│⭔ ${prefix}3dscifi
-│⭔ ${prefix}3drainbow
-│⭔ ${prefix}3dwaterpipe
-│⭔ ${prefix}halloweenskeleton
-│⭔ ${prefix}sketch
-│⭔ ${prefix}bluecircuit
-│⭔ ${prefix}space
-│⭔ ${prefix}metallic
-│⭔ ${prefix}fiction
-│⭔ ${prefix}greenhorror
-│⭔ ${prefix}transformer
-│⭔ ${prefix}berry
-│⭔ ${prefix}thunder
-│⭔ ${prefix}magma
-│⭔ ${prefix}3dcrackedstone
-│⭔ ${prefix}3dneonlight
-│⭔ ${prefix}impressiveglitch
-│⭔ ${prefix}naturalleaves
-│⭔ ${prefix}fireworksparkle
-│⭔ ${prefix}matrix
-│⭔ ${prefix}dropwater
-│⭔ ${prefix}harrypotter
-│⭔ ${prefix}foggywindow
-│⭔ ${prefix}neondevils
-│⭔ ${prefix}christmasholiday
-│⭔ ${prefix}3dgradient
-│⭔ ${prefix}blackpink
-│⭔ ${prefix}gluetext
 
+  ╭──❰ 𝗧𝗘𝗫𝗧 𝗣𝗥𝗢 𝗠𝗘𝗡𝗨 ❱
+  │⚽ ${prefix}3dchristmas
+  │⚽ ${prefix}3ddeepsea
+  │⚽ ${prefix}americanflag
+  │⚽ ${prefix}3dscifi
+  │⚽ ${prefix}3drainbow
+  │⚽ ${prefix}3dwaterpipe
+  │⚽ ${prefix}halloweenskeleton
+  │⚽ ${prefix}sketch
+  │⚽ ${prefix}bluecircuit
+  │⚽ ${prefix}space
+  │⚽ ${prefix}metallic
+  │⚽ ${prefix}fiction
+  │⚽ ${prefix}greenhorror
+  │⚽ ${prefix}transformer
+  │⚽ ${prefix}berry
+  │⚽ ${prefix}thunder
+  │⚽ ${prefix}magma
+  │⚽ ${prefix}3dcrackedstone
+  │⚽ ${prefix}3dneonlight
+  │⚽ ${prefix}impressiveglitch
+  │⚽ ${prefix}naturalleaves
+  │⚽ ${prefix}fireworksparkle
+  │⚽ ${prefix}matrix
+  │⚽ ${prefix}dropwater
+  │⚽ ${prefix}harrypotter
+  │⚽ ${prefix}foggywindow
+  │⚽ ${prefix}neondevils
+  │⚽ ${prefix}christmasholiday
+  │⚽ ${prefix}3dgradient
+  │⚽ ${prefix}blackpink
+  │⚽ ${prefix}gluetext
+  ╰─────────────⦁
     
-┌──⭓ *Ephoto Menu*
-│
-│⭔ ${prefix}ffcover
-│⭔ ${prefix}crossfire
-│⭔ ${prefix}galaxy
-│⭔ ${prefix}glass
-│⭔ ${prefix}neon
-│⭔ ${prefix}beach
-│⭔ ${prefix}blackpink
-│⭔ ${prefix}igcertificate
-│⭔ ${prefix}ytcertificate
-│
-└───────⭓
+  ╭───❰ 𝗘𝗣𝗛𝗢𝗧𝗢 𝗠𝗘𝗡𝗨 ❱
+  │❶ ${prefix}ffcover
+  │❷ ${prefix}crossfire
+  │❸ ${prefix}galaxy
+  │❹ ${prefix}glass
+  │❺ ${prefix}neon
+  │❻ ${prefix}beach
+  │❼ ${prefix}blackpink
+  │❽ ${prefix}igcertificate
+  │❾ ${prefix}ytcertificate
+  └───────────⦁
 
   ╭──❰ 𝗦𝗬𝗦𝗧𝗘𝗠 𝗠𝗘𝗡𝗨 ❱
   │⚙️ ${prefix}antilink
