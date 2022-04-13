@@ -1,4 +1,4 @@
-//═══════[© 2022 Zim Bot Inc.]════════\\
+//═══════[© 2022 YOSSEF Bot Inc.]════════\\
 
 //~you can re-upload but tag my channel
 //or put my channel link in the description.
